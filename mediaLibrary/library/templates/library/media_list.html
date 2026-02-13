@@ -9,7 +9,7 @@
     <a href="{% url 'library:media_detail' item.pk %}">
       {{ item.title }}
     </a>
-    — {{ item.creator }} ({{ item.get_status_display }})
+    — {{ item.creator }} ({{ item.get_type_display }}, {{ item.get_status_display }})
   </li>
   {% empty %}
   <li>No media items yet.</li>

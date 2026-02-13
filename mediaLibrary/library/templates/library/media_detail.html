@@ -3,6 +3,7 @@
 {% block content %}
 <h2>{{ item.title }}</h2>
 
+<p><strong>Type:</strong> {{ item.get_type_display }}</p>
 <p><strong>Creator:</strong> {{ item.creator }}</p>
 <p><strong>Status:</strong> {{ item.get_status_display }}</p>
 
@@ -10,5 +11,6 @@
 <p><strong>Notes:</strong><br>{{ item.notes }}</p>
 {% endif %}
 
+<a href="{% url 'library:media_edit' item.pk %}">Edit</a>
 <a href="{% url 'library:media_list' %}">Back to list</a>
 {% endblock %}
