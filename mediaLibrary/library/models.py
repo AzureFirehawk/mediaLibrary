@@ -4,7 +4,7 @@ from django.db import models
 class MediaItem(models.Model):
   STATUS_CHOICES = [
     ('wishlist', 'Wishlist'),
-    ('in-progress', 'In Progress'),
+    ('in_progress', 'In Progress'),
     ('completed', 'Completed'),
   ]
 
@@ -29,6 +29,13 @@ class MediaItem(models.Model):
   notes = models.TextField(blank=True)
   created_at = models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
+
+  def next_status(self):
+    if self.status == 'wishlist':
+      return 'in_progress'
+    elif self.status == 'in_progress':
+      return 'completed'
+    return None
 
   def __str__(self):
     return self.title
