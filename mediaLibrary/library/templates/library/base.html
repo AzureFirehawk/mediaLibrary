@@ -1,22 +1,27 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <title>Media Tracker</title>
+  <link rel="stylesheet" href="{% static 'library/styles.css' %}">
 </head>
 
 <body>
   <header>
     <h1>Personal Media Tracker</h1>
     <nav>
-      <a href="{% url 'library:media_list' %}">Home</a> |
+      <a href="{% url 'library:media_list' %}">Home</a>
       <a href="{% url 'library:media_create' %}">Add Item</a>
     </nav>
     <hr>
   </header>
 
-  {% block content %}{% endblock %}
+  <main>
+    {% block content %}{% endblock %}
+  </main>
 </body>
 
 </html>
