@@ -9,9 +9,18 @@
     Status:
     <select name="status">
       <option value="">All</option>
-      <option value="wishlist">Wishlist</option>
-      <option value="in-progress">In Progress</option>
-      <option value="completed">Completed</option>
+      <option value="wishlist" 
+        {% if status_filter == 'wishlist' %}selected{% endif %}>
+        Wishlist
+      </option>
+      <option value="in-progress" 
+        {% if status_filter == 'in-progress' %}selected{% endif %}>
+        In Progress
+      </option>
+      <option value="completed"
+        {% if status_filter == 'completed' %}selected{% endif %}>
+        Completed
+      </option>
     </select>
   </label>
 
@@ -19,11 +28,26 @@
     Type:
     <select name="type">
       <option value="">All</option>
-      <option value="book">Book</option>
-      <option value="movie">Movie</option>
-      <option value="game">Game</option>
-      <option value="show">TV Show</option>
-      <option value="other">Other</option>
+      <option value="book" 
+        {% if type_filter == 'book' %}selected{% endif %}>
+        Book
+      </option>
+      <option value="movie"
+        {% if type_filter == 'movie' %}selected{% endif %}>
+        Movie
+      </option>
+      <option value="game"
+        {% if type_filter == 'game' %}selected{% endif %}>
+        Game
+      </option>
+      <option value="show"
+        {% if type_filter == 'show' %}selected{% endif %}>
+        TV Show
+      </option>
+      <option value="other"
+        {% if type_filter == 'other' %}selected{% endif %}>
+        Other
+      </option>
     </select>
   </label>
   <button type="submit">Filter</button>
