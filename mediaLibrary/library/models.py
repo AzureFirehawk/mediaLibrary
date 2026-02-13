@@ -8,8 +8,20 @@ class MediaItem(models.Model):
     ('completed', 'Completed'),
   ]
 
+  TYPE_CHOICES = [
+    ('book', 'Book'),
+    ('movie', 'Movie'),
+    ('game', 'Game'),
+    ('show', 'TV Show'),
+    ('other', 'Other'),
+  ]
+
   title = models.CharField(max_length=200)
   creator = models.CharField(max_length=200)
+  type = models.CharField(
+    max_length=20, 
+    choices=TYPE_CHOICES, 
+    default='game')  
   status = models.CharField(
     max_length=20, 
     choices=STATUS_CHOICES,

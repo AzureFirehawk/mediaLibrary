@@ -4,4 +4,4 @@ from .models import MediaItem
 class MediaItemForm(forms.ModelForm):
     class Meta:
         model = MediaItem
-        fields = ['title', 'creator', 'status', 'notes']
+        fields = ['title', 'creator', 'type', 'status', 'notes']
