@@ -3,6 +3,34 @@
 {% block content %}
 <h2>My Media</h2>
 
+<!-- Filter by status or type -->
+<form method="get">
+  <label>
+    Status:
+    <select name="status">
+      <option value="">All</option>
+      <option value="wishlist">Wishlist</option>
+      <option value="in-progress">In Progress</option>
+      <option value="completed">Completed</option>
+    </select>
+  </label>
+
+  <label>
+    Type:
+    <select name="type">
+      <option value="">All</option>
+      <option value="book">Book</option>
+      <option value="movie">Movie</option>
+      <option value="game">Game</option>
+      <option value="show">TV Show</option>
+      <option value="other">Other</option>
+    </select>
+  </label>
+  <button type="submit">Filter</button>
+</form>
+<hr>
+
+<!-- List of media items -->
 <ul>
   {% for item in items %}
   <li>
