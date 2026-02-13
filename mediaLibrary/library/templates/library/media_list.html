@@ -1,0 +1,18 @@
+{% extends 'library/base.html' %}
+
+{% block content %}
+<h2>My Media</h2>
+
+<ul>
+  {% for item in items %}
+  <li>
+    <a href="{% url 'library:media_detail' item.pk %}">
+      {{ item.title }}
+    </a>
+    — {{ item.creator }} ({{ item.get_status_display }})
+  </li>
+  {% empty %}
+  <li>No media items yet.</li>
+  {% endfor %}
+</ul>
+{% endblock %}
