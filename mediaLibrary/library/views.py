@@ -26,3 +26,19 @@ def media_create(request):
     return render(request, 'library/media_form.html', {
         'form': form
     })
+
+def media_edit(request, pk):
+    item = get_object_or_404(MediaItem, pk=pk)
+
+    if request.method == 'POST':
+        form = MediaItemForm(request.POST, instance=item)
+        if form.is_valid():
+            form.save()
+            return redirect('library:media_detail', pk=item.pk)
+    else:
+        form = MediaItemForm(instance=item)
+
+    return render(request, 'library/media_form.html', {
+        'form': form,
+        'item': item
+    })
