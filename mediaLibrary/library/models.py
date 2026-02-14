@@ -9,9 +9,9 @@ class MediaItem(models.Model):
   ]
 
   TYPE_CHOICES = [
+    ('game', 'Game'),
     ('book', 'Book'),
     ('movie', 'Movie'),
-    ('game', 'Game'),
     ('show', 'TV Show'),
     ('other', 'Other'),
   ]

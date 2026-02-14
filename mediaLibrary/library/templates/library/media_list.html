@@ -55,16 +55,45 @@
 <hr>
 
 <!-- List of media items -->
-<ul>
-  {% for item in items %}
-  <li>
-    <a href="{% url 'library:media_detail' item.pk %}">
-      {{ item.title }}
-    </a>
-    — {{ item.creator }} ({{ item.get_type_display }}, {{ item.get_status_display }})
-  </li>
-  {% empty %}
-  <li>No media items yet.</li>
-  {% endfor %}
-</ul>
+{% for media_type, items in grouped_items.items %}
+<div class="media-group">
+  <h3>{{ media_type|title }}s</h3>
+
+  <ul class="media-list">
+    {% for item in items %}
+    <li class="media-item">
+
+      <div class="media-info">
+        <div class="media-title">
+          <a href="{% url 'library:media_detail' item.pk %}">
+            {{ item.title }}
+          </a>
+        </div>
+        <div class="media-meta">
+          {{ item.creator }} — {{ item.get_status_display }}
+        </div>
+      </div>
+
+      {% if item.status != 'completed' %}
+      <div class="status-action">
+        <form method="post" action="{% url 'library:media_advance_status' item.pk %}">
+          {% csrf_token %}
+          <button type="submit">
+            {% if item.status == 'wishlist' %}Start
+            {% elif item.status == 'in_progress' %}Complete
+            {% endif %}
+          </button>
+        </form>
+      </div>
+      {% endif %}
+
+    </li>
+    {% endfor %}
+  </ul>
+
+</div>
+{% empty %}
+<p>No media items found.</p>
+{% endfor %}
+
 {% endblock %}
